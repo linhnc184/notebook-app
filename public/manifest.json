@@ -1,0 +1,27 @@
+{
+  "name": "Notebook",
+  "description": "Notebook chrome extention",
+  "version": "0.0.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "action": {
+    "default_popup": "index.html"
+  },
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+N",
+        "mac": "MacCtrl+Shift+N"
+      },
+      "description": "Open notebook"
+    }
+  },
+  "options_page": "chrome-ext-options.html"
+}
