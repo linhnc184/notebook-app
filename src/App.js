@@ -1,18 +1,10 @@
 import './App.css';
+import Editor from './comps/Editor/Editor';
 
 function App() {
   return (
     <div className="App">
-      <form>
-        <div>
-          <label for="noteTitle">Title</label>
-          <input id="noteTitle" type="text" />
-        </div>
-        <div>
-          <label for="noteContent">Content2</label>
-          <textarea id="noteContent"></textarea>
-        </div>
-      </form>
+      <Editor />
     </div>
   );
 }
