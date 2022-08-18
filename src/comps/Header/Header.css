@@ -1,0 +1,12 @@
+.header {
+  min-height: 80px;
+  margin-bottom: 20px;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+}
+
+.header .clock {
+  margin-left: auto;
+}
