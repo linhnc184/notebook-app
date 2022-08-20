@@ -4,7 +4,8 @@ import Clock from '../Clock';
 const Header = () => {
   return (
     <header className="header">
-      <h3>Hi, have a nice day!</h3>
+      <img src="logo128.png" alt="notebook assistant" className="logo" />
+      <h4>Hi, have a nice day!</h4>
       <Clock />
     </header>
   );

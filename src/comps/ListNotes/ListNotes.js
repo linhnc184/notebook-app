@@ -4,9 +4,16 @@ import './ListNotes.css';
 const ListNotes = () => {
   const notes = [
     {
+      id: 'asdasd11',
+      title: 'Chức năng fullscreen',
+      content: 'Tạo model hiển thị editor toàn màn hình',
+      createdAt: '21/08/2022'
+    },
+    {
       id: 'asdasd',
       title: 'Tạo preview',
-      content: 'tạo preview shortcut, mở preview khi click 1 note',
+      content: `tạo preview shortcut, mở preview khi click 1 note, mỗi note sẽ mở lên 1 popup, ko giới hạn popup.
+      sắp xếp popup`,
       createdAt: '18/08/2022'
     },
     {

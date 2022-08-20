@@ -1,27 +1,28 @@
-import EditorJS from '@editorjs/editorjs';
-import { useEffect, useRef } from 'react';
-import { tools } from './editorjs-tools';
+import { useSelector, useDispatch } from 'react-redux';
+import { setContent } from './contentSlice';
 import './Editor.css';
 
 const Editor = () => {
-  const editor = useRef({ instance: null });
+  const content = useSelector((state) => state.editorContent.content);
+  const dispatch = useDispatch();
+  const handleInput = (e) => {
+    const textarea = e.target;
 
-  useEffect(() => {
-    // prevent duplicated editor
-    if (!editor.instance) {
-      editor.instance = new EditorJS({
-        holder: 'contentEditor',
-        placeholder: "don't miss any ideas...",
-        tools
-      });
+    if (textarea.offsetHeight < textarea.scrollHeight) {
+      textarea.style.height = `${textarea.scrollHeight}px`;
     }
-  }, []);
+
+    dispatch(setContent(textarea.value));
+  };
 
   return (
-    <div>
-      <div id="contentEditor"></div>
-      <div id="contentPreview"></div>
-    </div>
+    <textarea
+      className="Editor"
+      value={content}
+      placeholder="don't miss any ideas..."
+      autoFocus={true}
+      onInput={handleInput}
+    ></textarea>
   );
 };
 

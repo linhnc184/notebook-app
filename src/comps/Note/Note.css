@@ -17,8 +17,10 @@
 }
 
 .note .content {
+  display: inline-block;
   flex-basis: 100%;
   color: darkgray;
   overflow-x: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }

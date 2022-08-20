@@ -1,0 +1,8 @@
+.markDownPreview {
+  box-sizing: border-box;
+  border: 1px solid;
+  min-height: 120px;
+  max-height: 400px;
+  padding: 20px;
+  overflow: scroll;
+}
