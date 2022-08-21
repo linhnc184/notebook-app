@@ -28,7 +28,9 @@ const Editor = () => {
   };
 
   /**
-   * Catch the shortcut key combind
+   * Catch the shortcut:
+   * 
+   * Save shortcut:
    * - on Mac: CMD+S
    * - other: Ctrl+S
    */

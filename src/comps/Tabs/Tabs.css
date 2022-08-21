@@ -1,10 +1,9 @@
 .tabs {
-  margin-bottom: 20px;
+  margin-bottom: 12px;
 }
 
 .tabs .tabs__header {
   display: flex;
-  margin-bottom: 8px;
 }
 
 .tabs .tabs__header::after {
@@ -27,4 +26,9 @@
 
 .tabs .tabs__header .tabs__header__name.active {
   border-bottom: 0;
+}
+
+.tabs .tabs__container {
+  border: var(--common-border);
+  border-top: 0;
 }

@@ -7,4 +7,9 @@
   box-sizing: border-box;
   padding: 20px;
   box-shadow: rgba(0, 0, 0, 0.09) 0px 1px 4px;
+  border: 0;
+}
+
+.editor:focus-visible {
+  outline: 0;
 }

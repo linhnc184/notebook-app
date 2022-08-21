@@ -1,17 +1,18 @@
 .header {
-  height: 80px;
-  margin-bottom: 20px;
-  box-shadow: rgba(0, 0, 0, 0.09) 0px 1px 4px;
-  padding: 12px 20px;
+  height: 60px;
+  margin-bottom: 12px;
+  border: var(--common-border);
+  padding: 4px 20px;
   display: flex;
   align-items: center;
   box-sizing: border-box;
 }
 
-.header .Clock {
+.header .clock {
   margin-left: auto;
 }
 
 .header .logo {
   height: 100%;
+  margin-right: 8px;
 }
