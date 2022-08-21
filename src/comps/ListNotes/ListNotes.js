@@ -1,4 +1,3 @@
-import Note from '../Note';
 import './ListNotes.css';
 
 const ListNotes = () => {
@@ -25,7 +24,8 @@ const ListNotes = () => {
     {
       id: 'a123sd123-12312',
       title: 'Hoạt động ngay cả khi ko có api',
-      content: 'Lưu notes ở localstorage khi ko có kết nối được api, đồng bộ lại khi kết nối được api',
+      content:
+        'Lưu notes ở localstorage khi ko có kết nối được api, đồng bộ lại khi kết nối được api',
       createdAt: '18/08/2022'
     },
     {
@@ -39,14 +39,17 @@ const ListNotes = () => {
       title: 'Save khi nhấn tổ hợp phím CMD+S hoặc Ctrl+S',
       content: '',
       createdAt: '18/08/2022'
-    },
+    }
   ];
 
   return (
     <div className="list-notes">
-      <h3>The latest notes</h3>
       {notes.map((note) => (
-        <Note key={note.id} note={note} />
+        <div className="note" key={note.id}>
+          <div className="title">{note.title}</div>
+          <div className="date">{note.createdAt}</div>
+          <div className="content">{note.content || '(blank)'}</div>
+        </div>
       ))}
     </div>
   );

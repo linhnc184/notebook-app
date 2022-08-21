@@ -5,3 +5,30 @@
 .list-notes h3 {
   margin-top: 0px;
 }
+
+.list-notes .note {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.list-notes .note .date {
+  width: 25%;
+  color: coral;
+  text-align: right;
+}
+
+.list-notes .note .title {
+  flex: auto;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.list-notes .note .content {
+  display: inline-block;
+  flex-basis: 100%;
+  color: darkgray;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

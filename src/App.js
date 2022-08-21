@@ -1,25 +1,32 @@
-import './App.css';
+import { useSelector } from 'react-redux';
+import { Editor } from './comps/Editor';
+import { MarkdownPreview } from './comps/MarkdownPreview';
+import { Tabs, Tab } from './comps/Tabs';
 import Header from './comps/Header';
-import Editor from './comps/Editor/Editor';
 import ListNotes from './comps/ListNotes';
-import NavTab from './comps/NavTab';
-import Tab from './comps/NavTab/Tab';
-import Preview from './comps/Editor/Preview';
+import './App.css';
 
 function App() {
+  const content = useSelector(({ editor }) => editor.content);
+
   return (
     <div className="App">
       <Header />
       <div className="container">
-        <NavTab tabNames={['Write', 'Preview']} activeTab="Write">
-          <Tab tabName="Write">
+        <Tabs tabNames={['Write', 'Preview']}>
+          <Tab name="Write">
             <Editor />
           </Tab>
-          <Tab tabName="Preview">
-            <Preview />
+          <Tab name="Preview">
+            <MarkdownPreview content={content} />
           </Tab>
-        </NavTab>
-        <ListNotes />
+        </Tabs>
+
+        <Tabs tabNames={['Latest']}>
+          <Tab name="Latest">
+            <ListNotes />
+          </Tab>
+        </Tabs>
       </div>
     </div>
   );

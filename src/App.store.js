@@ -1,10 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import setContent from './comps/Editor/contentSlice';
-import navTabSlice from './comps/NavTab/navTabSlice';
+import editorSlice from './features/editorSlice';
 
 export default configureStore({
   reducer: {
-    editorContent: setContent,
-    navActiveTab: navTabSlice
+    editor: editorSlice
   }
 });

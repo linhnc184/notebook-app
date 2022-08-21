@@ -1,0 +1,30 @@
+.tabs {
+  margin-bottom: 20px;
+}
+
+.tabs .tabs__header {
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.tabs .tabs__header::after {
+  content: '';
+  flex-basis: 100%;
+  border-bottom: var(--common-border);
+}
+
+.tabs .tabs__header .tabs__header__name {
+  border: var(--common-border);
+  border-right: 0;
+  padding: 12px 12px 8px 12px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.tabs .tabs__header .tabs__header__name:last-child {
+  border-right: var(--common-border);
+}
+
+.tabs .tabs__header .tabs__header__name.active {
+  border-bottom: 0;
+}
