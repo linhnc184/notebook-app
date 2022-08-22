@@ -22,10 +22,11 @@ function App() {
           </Tab>
         </Tabs>
 
-        <Tabs tabNames={['Latest']}>
-          <Tab name="Latest">
+        <Tabs tabNames={['TODO', 'New ideas']}>
+          <Tab name="TODO">
             <ListNotes />
           </Tab>
+          <Tab name="New ideas"></Tab>
         </Tabs>
       </div>
     </div>

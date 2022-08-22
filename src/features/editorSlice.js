@@ -12,5 +12,5 @@ export const editorSlice = createSlice({
   }
 });
 
-export const { setNote } = editorSlice.actions;
+export const { actions } = editorSlice;
 export default editorSlice.reducer;

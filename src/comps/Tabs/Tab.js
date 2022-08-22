@@ -1,11 +1,12 @@
 const Tab = ({ name, active, children }) => {
+  const empty = <div style={{ padding: '20px' }}></div>;
   return (
     <div
-      className="Tab"
+      className="tab"
       name={name}
       style={{ display: active ? 'block' : 'none' }}
     >
-      {children}
+      {children || empty}
     </div>
   );
 };

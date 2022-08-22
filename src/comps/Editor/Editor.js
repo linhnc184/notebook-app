@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { setNote } from '../../features/editorSlice';
+import { actions as editorActions } from '../../features/editorSlice';
 import { actions as noteActions } from '../../features/notesSlice';
+import { debounce, getFirstLine } from '../../ultis';
 import './Editor.css';
 
 const Editor = () => {
@@ -17,16 +18,28 @@ const Editor = () => {
   /**
    * TODO: Save to database
    */
-  const save = () => {
-    dispatch(noteActions.add(note));
-    dispatch(setNote(null));
+  const saveNote = (content) => {
+    dispatch(
+      noteActions.add({
+        ...note,
+        title: getFirstLine(content),
+        content
+      })
+    );
+  };
+
+  /**
+   * Create new note without save current changes
+   */
+  const newNote = () => {
+    dispatch(editorActions.setNote(null));
   };
 
   /**
    * Save content to local storage every time it's changed
    * Resize editor height to fit content length
    */
-  const handleInput = (e) => {
+  const handleInput = debounce((e) => {
     const textarea = e.target;
 
     if (textarea.offsetHeight < textarea.scrollHeight) {
@@ -34,13 +47,13 @@ const Editor = () => {
     }
 
     dispatch(
-      setNote({
+      editorActions.setNote({
         ...note,
-        title: textarea.value.substring(0, 100),
+        title: getFirstLine(textarea.value),
         content: textarea.value
       })
     );
-  };
+  });
 
   /**
    * Catch the shortcut:
@@ -48,18 +61,28 @@ const Editor = () => {
    * Save shortcut:
    * - on Mac: CMD+S
    * - other: Ctrl+S
+   *
+   * Create new note shortcut:
+   * - on Mac: CMD+E
+   * - other: Ctrl+E
    */
   const handleKeyDown = (e) => {
-    if ((e.ctrlKey || e.metaKey) && String(e.key).toLocaleLowerCase() === 's') {
+    if ((e.ctrlKey || e.metaKey) && e.key.toLocaleLowerCase() === 's') {
       e.preventDefault();
-      save(e.target.value);
+      saveNote(e.target.value);
+    }
+
+    if ((e.ctrlKey || e.metaKey) && e.key.toLocaleLowerCase() === 'backspace') {
+      e.preventDefault();
+      e.target.value = '';
+      newNote();
     }
   };
 
   return (
     <textarea
       className="editor"
-      value={content}
+      defaultValue={content}
       placeholder="don't miss any ideas..."
       autoFocus={true}
       onInput={handleInput}

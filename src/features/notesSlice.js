@@ -3,21 +3,26 @@ import { createSlice } from '@reduxjs/toolkit';
 export const notes = createSlice({
   name: 'notes',
   initialState: {
-    list: []
+    list: [],
+    trash: []
   },
   reducers: {
-    add: ({ list }, { payload }) => {
-      const index = list.findIndex((note) => note.id === payload.id);
+    add: (state, { payload }) => {
+      const index = state.list.findIndex((note) => note.id === payload.id);
+
       if (index >= 0) {
-        list[index] = payload;
+        state.list[index] = payload;
       } else {
-        list.unshift(payload);
+        state.list.unshift(payload);
       }
     },
-    remove: ({ list }, { payload }) => {
-      const index = list.findIndex((note) => note.id === payload.id);
+    remove: (state, { payload }) => {
+      const index = state.list.findIndex((note) => note.id === payload.id);
+
       if (index >= 0) {
-        list.splice(index, 1);
+        state.trash = state.trash || [];
+        state.trash.unshift(state.list[index]);
+        state.list.splice(index, 1);
       }
     }
   }

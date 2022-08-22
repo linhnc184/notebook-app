@@ -1,13 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { actions as noteActions } from '../../features/notesSlice';
-import { setNote } from '../../features/editorSlice';
+import { actions as editorActions } from '../../features/editorSlice';
 import './ListNotes.css';
 
 const ListNotes = () => {
   const { list } = useSelector(({ notes }) => notes);
   const dispatch = useDispatch();
   const removeNote = (note) => dispatch(noteActions.remove(note));
-  const editNote = (note) => dispatch(setNote(note));
+  const editNote = (note) => dispatch(editorActions.setNote(note));
 
   return (
     <div className="list-notes">
