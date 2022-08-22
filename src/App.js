@@ -7,7 +7,7 @@ import ListNotes from './comps/ListNotes';
 import './App.css';
 
 function App() {
-  const content = useSelector(({ editor }) => editor.content);
+  const note = useSelector(({ editor }) => editor.note);
 
   return (
     <div className="App">
@@ -18,7 +18,7 @@ function App() {
             <Editor />
           </Tab>
           <Tab name="Preview">
-            <MarkdownPreview content={content} />
+            <MarkdownPreview content={note && note.content} />
           </Tab>
         </Tabs>
 

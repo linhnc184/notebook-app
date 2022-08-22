@@ -1,16 +1,25 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { setDisplay } from '../../features/editorSlice';
+import { setNote } from '../../features/editorSlice';
+import { actions as noteActions } from '../../features/notesSlice';
 import './Editor.css';
 
 const Editor = () => {
   const dispatch = useDispatch();
-  const { content } = useSelector((state) => state.editor);
+  const editor = useSelector(({ editor }) => editor);
+  const note = editor.note || {
+    id: Date.now(), // temporary id
+    title: '',
+    content: '',
+    createdAt: Date.now()
+  };
+  const content = note.content;
 
   /**
    * TODO: Save to database
    */
-  const save = (content) => {
-    console.log('save content', content);
+  const save = () => {
+    dispatch(noteActions.add(note));
+    dispatch(setNote(null));
   };
 
   /**
@@ -24,12 +33,18 @@ const Editor = () => {
       textarea.style.height = `${textarea.scrollHeight}px`;
     }
 
-    dispatch(setDisplay({ content: textarea.value }));
+    dispatch(
+      setNote({
+        ...note,
+        title: textarea.value.substring(0, 100),
+        content: textarea.value
+      })
+    );
   };
 
   /**
    * Catch the shortcut:
-   * 
+   *
    * Save shortcut:
    * - on Mac: CMD+S
    * - other: Ctrl+S

@@ -3,15 +3,14 @@ import { createSlice } from '@reduxjs/toolkit';
 export const editorSlice = createSlice({
   name: 'editorSlice',
   initialState: {
-    content: '',
-    height: 120 // pixel
+    note: null
   },
   reducers: {
-    setDisplay: (state, action) => {
-      Object.assign(state, action.payload);
+    setNote: (state, { payload }) => {
+      state.note = payload;
     }
   }
 });
 
-export const { setDisplay } = editorSlice.actions;
+export const { setNote } = editorSlice.actions;
 export default editorSlice.reducer;

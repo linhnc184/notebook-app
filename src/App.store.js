@@ -3,7 +3,8 @@ import { combineReducers } from 'redux';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import thunk from 'redux-thunk';
-import editorSlice from './features/editorSlice';
+import notes from './features/notesSlice';
+import editor from './features/editorSlice';
 
 export default configureStore({
   reducer: persistReducer(
@@ -12,7 +13,8 @@ export default configureStore({
       storage
     },
     combineReducers({
-      editor: editorSlice
+      notes,
+      editor
     })
   ),
   middleware: [thunk],
