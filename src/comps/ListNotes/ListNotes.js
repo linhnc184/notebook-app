@@ -3,6 +3,12 @@ import './ListNotes.css';
 const ListNotes = () => {
   const notes = [
     {
+      id: 'asdasd1123123',
+      title: 'Tạo tùy chọn cho editor để tiện dụng hơn',
+      content: 'Tạo tùy chọn để generate các thành phần markdown để dễ dùng hơn trên điện thoại',
+      createdAt: '22/08/2022'
+    },
+    {
       id: 'asdasd11',
       title: 'Chức năng fullscreen',
       content: 'Tạo model hiển thị editor toàn màn hình',

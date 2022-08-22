@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <header className="header">
       <img src="logo128.png" alt="notebook assistant" className="logo" />
-      <h4>Hi, have a nice day!</h4>
+      <h4>Hi,<br/>have a nice day!</h4>
       <Clock />
     </header>
   );
