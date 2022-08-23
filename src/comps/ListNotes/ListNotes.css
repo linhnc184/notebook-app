@@ -9,18 +9,22 @@
 .list-notes .note {
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
+  position: relative;
 }
 
 .list-notes .note .date {
-  color: coral;
-  text-align: right;
+  color: grey;
+  font-size: 12px;
 }
 
 .list-notes .note .title {
-  flex: auto;
-  font-size: 18px;
+  width: 100%;
+  font-size: 16px;
   margin-bottom: 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   cursor: pointer;
 }
 
@@ -35,4 +39,20 @@
   overflow-x: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.list-notes .note .del-note {
+  position: absolute;
+  right: -18px;
+  bottom: calc(50% - 10px);
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  line-height: 1em;
+  font-size: 18px;
+  display: none;
+}
+
+.list-notes .note:hover .del-note {
+  display: block;
 }

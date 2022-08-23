@@ -1,0 +1,6 @@
+.footer {
+  height: 40px;
+  border-top: var(--common-border);
+  padding: 4px 20px;
+  display: flex;
+}

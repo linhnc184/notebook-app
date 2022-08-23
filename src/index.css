@@ -20,3 +20,38 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* layout mobile */
+.app {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  height: 100vh;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.app > .header {
+  width: 100%;
+}
+
+.app > .sidebar {
+  width: 100%;
+}
+
+.app > .main {
+  flex: 1;
+}
+
+.app > .footer {
+  width: 100%;
+}
+
+/* layout tablet, desktop */
+@media (width > 768px) {
+  .app > .sidebar {
+    width: 300px;
+    margin-right: 12px;
+    box-sizing: border-box;
+  }
+}

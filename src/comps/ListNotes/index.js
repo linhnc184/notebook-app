@@ -1,3 +1,3 @@
 import ListNotes from './ListNotes';
 
-export default ListNotes;
+export { ListNotes };

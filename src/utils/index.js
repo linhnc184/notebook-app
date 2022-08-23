@@ -10,7 +10,8 @@ const debounce = (callback, time = 500) => {
 };
 
 const getFirstLine = (content, end = 100) => {
-  return content.split('\n')[0].trim().substring(0, end);
+  const firstLine = content.split('\n')[0].trim();
+  return firstLine.substring(0, end);
 };
 
 export { debounce, getFirstLine };

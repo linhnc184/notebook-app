@@ -1,13 +1,11 @@
-import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { actions as editorActions } from '../../features/editorSlice';
 import { actions as noteActions } from '../../features/notesSlice';
-import { debounce, getFirstLine } from '../../ultis';
+import { debounce, getFirstLine } from '../../utils';
 import './Editor.css';
 
 const Editor = () => {
   const dispatch = useDispatch();
-  const [editorKey, setEditorKey] = useState(Date.now());
   const editor = useSelector(({ editor }) => editor);
   const note = editor.note || {
     id: Date.now(), // temporary id
@@ -76,14 +74,13 @@ const Editor = () => {
 
     if ((e.ctrlKey || e.metaKey) && e.key.toLocaleLowerCase() === 'backspace') {
       e.preventDefault();
-      setEditorKey(Date.now());
       newNote();
     }
   };
 
   return (
     <textarea
-      key={editorKey}
+      key={note.id}
       className="editor"
       defaultValue={content}
       placeholder="don't miss any ideas..."

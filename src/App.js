@@ -2,17 +2,18 @@ import { useSelector } from 'react-redux';
 import { Editor } from './comps/Editor';
 import { MarkdownPreview } from './comps/MarkdownPreview';
 import { Tabs, Tab } from './comps/Tabs';
-import Header from './comps/Header';
-import ListNotes from './comps/ListNotes';
-import './App.css';
+import { Header } from './comps/Header';
+import { Sidebar } from './comps/Sidebar';
+import { Footer } from './comps/Footer';
 
 function App() {
   const note = useSelector(({ editor }) => editor.note);
 
   return (
-    <div className="App">
+    <div className="app">
       <Header />
-      <div className="container">
+      <Sidebar />
+      <div className="main">
         <Tabs tabNames={['Write', 'Preview']}>
           <Tab name="Write">
             <Editor />
@@ -21,14 +22,8 @@ function App() {
             <MarkdownPreview content={note && note.content} />
           </Tab>
         </Tabs>
-
-        <Tabs tabNames={['TODO', 'New ideas']}>
-          <Tab name="TODO">
-            <ListNotes />
-          </Tab>
-          <Tab name="New ideas"></Tab>
-        </Tabs>
       </div>
+      <Footer />
     </div>
   );
 }

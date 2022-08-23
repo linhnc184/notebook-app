@@ -1,7 +1,7 @@
 .header {
-  height: 60px;
+  height: 40px;
   margin-bottom: 12px;
-  border: var(--common-border);
+  border-bottom: var(--common-border);
   padding: 4px 20px;
   display: flex;
   align-items: center;

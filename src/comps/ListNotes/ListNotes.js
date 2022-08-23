@@ -17,8 +17,10 @@ const ListNotes = () => {
             {note.title || '(empty)'}
           </div>
           <div className="date">{new Date(note.createdAt).toDateString()}</div>
-          <div className="content">{note.content}</div>
-          <button onClick={() => removeNote(note)}>x</button>
+          <button
+            className="del-note"
+            onClick={() => removeNote(note)}
+          >␡</button>
         </div>
       ))}
     </div>

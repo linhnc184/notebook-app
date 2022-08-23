@@ -4,6 +4,7 @@
 
 .tabs .tabs__header {
   display: flex;
+  overflow: scroll;
 }
 
 .tabs .tabs__header::after {
