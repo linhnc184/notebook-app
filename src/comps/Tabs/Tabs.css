@@ -19,6 +19,7 @@
   padding: 12px 12px 8px 12px;
   cursor: pointer;
   white-space: nowrap;
+  background-color: var(--common-background-color);
 }
 
 .tabs .tabs__header .tabs__header__name:last-child {
