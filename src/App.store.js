@@ -5,6 +5,7 @@ import storage from 'redux-persist/lib/storage';
 import thunk from 'redux-thunk';
 import notes from './features/notesSlice';
 import editor from './features/editorSlice';
+import notePopups from './features/notePopupsSlice';
 
 export default configureStore({
   reducer: persistReducer(
@@ -14,7 +15,8 @@ export default configureStore({
     },
     combineReducers({
       notes,
-      editor
+      editor,
+      notePopups
     })
   ),
   middleware: [thunk],

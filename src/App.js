@@ -7,10 +7,12 @@ import { Sidebar } from './comps/Sidebar';
 import { Footer } from './comps/Footer';
 import { actions as editorActions } from './features/editorSlice';
 import classNames from 'classnames';
+import Popup from './comps/Popup/Popup';
 
 function App() {
   const dispatch = useDispatch();
   const note = useSelector(({ editor }) => editor.note);
+  const popups = useSelector(({ notePopups }) => notePopups.popups);
 
   const newNote = () => {
     dispatch(
@@ -41,6 +43,11 @@ function App() {
         +
       </div>
       <Footer />
+      {popups.map((popup) => (
+        <Popup key={popup.note.id} title={popup.note.title}>
+          <MarkdownPreview content={popup.note.content} />
+        </Popup>
+      ))}
     </div>
   );
 }

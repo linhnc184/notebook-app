@@ -91,7 +91,7 @@ code {
     position: relative;
   }
 
-  .app > .new-node {
+  .app > .new-note {
     display: none;
   }
 }

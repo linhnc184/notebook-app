@@ -1,0 +1,38 @@
+.popup {
+  position: fixed;
+  width: 100px;
+  height: 100px;
+  border: var(--common-border);
+  background-color: var(--common-background-color);
+  box-sizing: border-box;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.popup:active {
+  z-index: 2;
+}
+
+.popup .popup--header {
+  padding: 8px;
+  border-bottom: var(--common-border);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: grab;
+  user-select: none;
+}
+
+.popup .popup--header:active {
+  cursor: grabbing;
+}
+
+.popup .popup--body {
+  padding: 8px;
+  box-sizing: border-box;
+  overflow: scroll;
+}
+
+.popup .popup--body .markDown-preview {
+  padding: 0;
+}
