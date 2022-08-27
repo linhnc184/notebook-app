@@ -12,7 +12,7 @@ import Popup from './comps/Popup/Popup';
 function App() {
   const dispatch = useDispatch();
   const note = useSelector(({ editor }) => editor.note);
-  const popups = useSelector(({ notePopups }) => notePopups.popups);
+  const popups = useSelector(({ popups }) => popups?.list);
 
   const newNote = () => {
     dispatch(
@@ -43,11 +43,17 @@ function App() {
         +
       </div>
       <Footer />
-      {popups.map((popup) => (
-        <Popup key={popup.note.id} title={popup.note.title}>
-          <MarkdownPreview content={popup.note.content} />
-        </Popup>
-      ))}
+      <div className="popups">
+        {popups?.map((popup) => (
+          <Popup
+            key={popup.note.id}
+            title={popup.note.title}
+            popupState={popup}
+          >
+            <MarkdownPreview content={popup.note.content} />
+          </Popup>
+        ))}
+      </div>
     </div>
   );
 }

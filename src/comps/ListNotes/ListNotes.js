@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { actions as noteActions } from '../../features/notesSlice';
-import { actions as notePopupsActions } from '../../features/notePopupsSlice';
+import { actions as popupsActions } from '../../features/popupsSlice';
 import './ListNotes.css';
 
 const ListNotes = () => {
@@ -12,7 +12,7 @@ const ListNotes = () => {
   };
 
   const addPopup = (note) => {
-    dispatch(notePopupsActions.addPopup({ key: note.id, note }));
+    dispatch(popupsActions.addPopup({ id: note.id, note }));
   };
 
   return (
