@@ -5,8 +5,28 @@ import './Popup.css';
 
 const Popup = ({ popupState, title, children }) => {
   const [target, setTarget] = useState(null);
-  const handleMouseDown = (e) => setTarget(e.target.offsetParent);
   const dispatch = useDispatch();
+
+  /**
+   * Save position of the target popup
+   */
+  const onMouseDown = () => {
+    dispatch(popupsActions.updatePopup(popupState));
+  };
+
+  /**
+   * Set the popup will move with the mouse
+   */
+  const onHeaderMouseDown = (e) => {
+    setTarget(e.target.offsetParent);
+  };
+
+  /**
+   * Close popup without delete note
+   */
+  const closePopup = () => {
+    dispatch(popupsActions.removePopup(popupState));
+  };
 
   useEffect(() => {
     const mouse = { x: null, y: null }; // don't know when page load
@@ -45,9 +65,16 @@ const Popup = ({ popupState, title, children }) => {
   }, [target, popupState, dispatch]);
 
   return (
-    <div className="popup" style={{ top: popupState.y, left: popupState.x }}>
-      <div className="popup--header" onMouseDown={handleMouseDown}>
-        {title}
+    <div
+      className="popup"
+      onMouseDown={onMouseDown}
+      style={{ top: popupState.y, left: popupState.x }}
+    >
+      <div className="popup--header" onMouseDown={onHeaderMouseDown}>
+        <div className="popup--title">{title}</div>
+        <button className="close-popup" onClick={closePopup}>
+          x
+        </button>
       </div>
       <div className="popup--body">{children}</div>
     </div>

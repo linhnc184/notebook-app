@@ -8,6 +8,7 @@ import { Footer } from './comps/Footer';
 import { actions as editorActions } from './features/editorSlice';
 import classNames from 'classnames';
 import Popup from './comps/Popup/Popup';
+import { ListNotes } from './comps/ListNotes';
 
 function App() {
   const dispatch = useDispatch();
@@ -28,8 +29,8 @@ function App() {
   return (
     <div className={classNames({ app: true, 'has-note': !!note })}>
       <Header />
-      <Sidebar />
-      <div className="main">
+      {/* <Sidebar /> */}
+      {/* <div className="main">
         <Tabs tabNames={['Write', 'Preview']}>
           <Tab name="Write">
             <Editor />
@@ -38,7 +39,13 @@ function App() {
             <MarkdownPreview content={note && note.content} />
           </Tab>
         </Tabs>
-      </div>
+      </div> */}
+      <Tabs tabNames={['TODO', 'New ideas']}>
+        <Tab name="TODO">
+          <ListNotes />
+        </Tab>
+        <Tab name="New ideas"></Tab>
+      </Tabs>
       <div className="new-note" onClick={newNote}>
         +
       </div>
@@ -50,7 +57,15 @@ function App() {
             title={popup.note.title}
             popupState={popup}
           >
-            <MarkdownPreview content={popup.note.content} />
+            <Editor />
+            {/* <MarkdownPreview content={popup.note.content} /> */}
+            {/* <Tabs tabNames={['Write', 'Preview']}>
+              <Tab name="Write">
+              </Tab>
+              <Tab name="Preview">
+                <MarkdownPreview content={note && note.content} />
+              </Tab>
+            </Tabs> */}
           </Popup>
         ))}
       </div>
