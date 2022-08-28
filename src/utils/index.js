@@ -1,4 +1,4 @@
-const debounce = (callback, time = 300) => {
+const debounce = (callback, time = 500) => {
   let timeoutId = null;
 
   return (...args) => {

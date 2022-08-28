@@ -7,7 +7,7 @@ export const editorSlice = createSlice({
   },
   reducers: {
     setNote: (state, { payload }) => {
-      state.note = payload;
+      state.note = { ...payload, createdAt: Date.now() };
     }
   }
 });

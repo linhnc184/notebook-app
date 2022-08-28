@@ -6,22 +6,16 @@ export const popupsSlice = createSlice({
     list: []
   },
   reducers: {
-    addPopup: (state, { payload: popup }) => {
+    openPopup: (state, { payload: popup }) => {
       const i = state.list.findIndex((p) => p.id === popup.id);
       if (i < 0) {
         state.list.unshift(popup);
       }
     },
-    updatePopup: (state, { payload: popup }) => {
+    closePopup: (state, { payload: popup }) => {
       const i = state.list.findIndex((p) => p.id === popup.id);
       if (i >= 0) {
-        state.list[i] = popup;
-      }
-    },
-    removePopup: (state, { payload: popup }) => {
-      const i = state.list.findIndex((p) => p.id === popup.id);
-      if (i >= 0) {
-        state.list.slice(i, 0);
+        state.list.splice(i, 1);
       }
     }
   }

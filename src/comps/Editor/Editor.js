@@ -1,92 +1,42 @@
+import { useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { actions as editorActions } from '../../features/editorSlice';
 import { actions as noteActions } from '../../features/notesSlice';
 import { debounce, getFirstLine } from '../../utils';
 import './Editor.css';
 
-const Editor = () => {
+const Editor = (props) => {
+  const ref = useRef();
   const dispatch = useDispatch();
   const editor = useSelector(({ editor }) => editor);
+
   const note = editor.note || {
-    id: Date.now(), // temporary id
-    title: '',
-    content: '',
-    createdAt: Date.now()
-  };
-  const content = note.content;
-
-  /**
-   * TODO: Save to database
-   */
-  const saveNote = (content) => {
-    dispatch(
-      noteActions.add({
-        ...note,
-        title: getFirstLine(content),
-        content
-      })
-    );
-  };
-
-  /**
-   * Create new note without save current changes
-   */
-  const newNote = () => {
-    dispatch(editorActions.setNote(null));
+    id: Date.now(),
+    title: getFirstLine(props.defaultContent),
+    content: props.defaultContent
   };
 
   /**
    * Save content to local storage every time it's changed
-   * Resize editor height to fit content length
    */
-  const handleInput = debounce((e) => {
-    const textarea = e.target;
-
-    if (textarea.offsetHeight < textarea.scrollHeight) {
-      textarea.style.height = `${textarea.scrollHeight}px`;
-    }
-
+  const handleInput = debounce(() => {
     dispatch(
-      editorActions.setNote({
+      noteActions.add({
         ...note,
-        title: getFirstLine(textarea.value),
-        content: textarea.value
+        title: getFirstLine(ref.current.value),
+        content: ref.current.value
       })
     );
-  });
-
-  /**
-   * Catch the shortcut:
-   *
-   * Save shortcut:
-   * - on Mac: CMD+S
-   * - other: Ctrl+S
-   *
-   * Create new note shortcut:
-   * - on Mac: CMD+E
-   * - other: Ctrl+E
-   */
-  const handleKeyDown = (e) => {
-    if ((e.ctrlKey || e.metaKey) && e.key.toLocaleLowerCase() === 's') {
-      e.preventDefault();
-      saveNote(e.target.value);
-    }
-
-    if ((e.ctrlKey || e.metaKey) && e.key.toLocaleLowerCase() === 'backspace') {
-      e.preventDefault();
-      newNote();
-    }
-  };
+  }, 0);
 
   return (
     <textarea
       key={note.id}
+      ref={ref}
       className="editor"
-      defaultValue={content}
+      defaultValue={note.content}
       placeholder="don't miss any ideas..."
       autoFocus={true}
       onInput={handleInput}
-      onKeyDown={handleKeyDown}
     ></textarea>
   );
 };
