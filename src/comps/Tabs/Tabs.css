@@ -20,6 +20,7 @@
   cursor: pointer;
   white-space: nowrap;
   background-color: var(--common-background-color);
+  /* filter: blur(8px); */
 }
 
 .tabs .tabs__header .tabs__header__name:last-child {

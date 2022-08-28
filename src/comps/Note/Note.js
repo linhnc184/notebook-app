@@ -7,7 +7,7 @@ const Note = ({ note }) => {
   const date = new Date(note.createdAt);
   const dispatch = useDispatch();
   const editNote = (note) => {
-    dispatch(popupsActions.openPopup({ id: note.id }));
+    dispatch(popupsActions.openPopup({ id: note.id, title: note.title }));
     dispatch(editorActions.setNote(note));
   };
 

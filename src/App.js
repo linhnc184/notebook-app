@@ -1,10 +1,11 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { Editor } from './comps/Editor';
-import { Header } from './comps/Header';
 import { actions as editorActions } from './features/editorSlice';
 import { actions as popupsActions } from './features/popupsSlice';
+import { Editor } from './comps/Editor';
+import { Header } from './comps/Header';
 import { Note } from './comps/Note';
 import { Popup } from './comps/Popup';
+import { Button } from './comps/Button';
 
 function App() {
   const dispatch = useDispatch();
@@ -12,7 +13,7 @@ function App() {
   const popups = useSelector(({ popups }) => popups?.list);
 
   const newNote = () => {
-    dispatch(popupsActions.openPopup({ id: Date.now() }));
+    dispatch(popupsActions.openPopup({ id: Date.now(), title: 'New Note' }));
     dispatch(editorActions.setNote({ id: Date.now() }));
   };
 
@@ -26,7 +27,9 @@ function App() {
         ))}
       </div>
 
-      <button type="button" className="new-note" onClick={newNote}></button>
+      <Button className="new-note" onClick={newNote}>
+        <i className="material-icons">add</i>
+      </Button>
 
       {popups &&
         popups.map((popup) => (
