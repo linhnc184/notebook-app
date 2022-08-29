@@ -1,13 +1,5 @@
 @import-normalize;
-
-@keyframes slideRightToLeft {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
+@import './styles/animation.css';
 
 :root {
   --default-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',

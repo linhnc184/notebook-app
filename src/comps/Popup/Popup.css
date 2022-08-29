@@ -7,7 +7,7 @@
   background-color: var(--common-background-color);
   box-sizing: border-box;
   overflow: hidden;
-  animation: 200ms ease-in 0s 1 slideRightToLeft;
+  animation: 500ms ease-in 0s 1 slideRightToLeft;
 }
 
 .popup .popup--header {
@@ -18,22 +18,13 @@
   padding: 0 20px;
 }
 
-.popup .popup--header .popup--title {
-  flex: 1;
-  font-size: 20px;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  box-sizing: border-box;
-}
-
 .popup .popup--header .popup--actions {
   display: flex;
-  margin-left: auto;
 }
 
 .popup .popup--header .popup--actions .new-note,
 .popup .popup--header .popup--actions .close-popup {
-  margin-left: 16px;
+  margin-right: 16px;
 }
 
 .popup .popup--body {

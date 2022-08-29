@@ -35,7 +35,6 @@ const Editor = (props) => {
       className="editor"
       defaultValue={note.content}
       placeholder="don't miss any ideas..."
-      autoFocus={true}
       onInput={handleInput}
     ></textarea>
   );
